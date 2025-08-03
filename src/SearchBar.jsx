@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import searchSpotify from './Spotify';
 
 
 const SearchBar = () => {
@@ -11,7 +12,7 @@ const SearchBar = () => {
 
     // Functions to handle search and clear actions
     const handleSearch = () => {
-        alert(`Searching for: ${Search}`);
+        searchSpotify(Search);
     }
 
     const handleClear = () => {
