@@ -1,7 +1,9 @@
+import { meta } from "@eslint/js";
+
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 const redirectUri = import.meta.env.VITE_SPOTIFY_REDIRECT_URI;
+const scope = import.meta.env.VITE_SPOTIFY_SCOPE;
 const authEndpoint = 'https://accounts.spotify.com/authorize';
-const scope = 'playlist-modify-public';
 const authUrl =  `${authEndpoint}?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}`;
 
 const extractCode = () => {
