@@ -1,10 +1,13 @@
-import { meta } from "@eslint/js";
+import React from 'react';
+import { searchSpotify } from './spotify';
 
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 const redirectUri = import.meta.env.VITE_SPOTIFY_REDIRECT_URI;
 const scope = import.meta.env.VITE_SPOTIFY_SCOPE;
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const authUrl =  `${authEndpoint}?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}`;
+const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
+
 
 const extractCode = () => {
     const params = new URLSearchParams(window.location.search);
@@ -12,7 +15,7 @@ const extractCode = () => {
 };
 
 const getAccessTokenFromBackend = async (code) => {
-    const response = await fetch('/callback', {
+    const response = await fetch(`${backendUrl}/callback`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code })
