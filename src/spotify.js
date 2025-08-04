@@ -22,7 +22,7 @@ const getAccessTokenFromBackend = async (code) => {
         throw new Error('Failed to retrieve access token');
     }
     const data = await response.json();
-    return data.access_token;
+    return data.accessToken;
     
 };
 
