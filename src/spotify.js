@@ -24,10 +24,21 @@ const getAccessTokenFromBackend = async (code) => {
 };
 
 
+const searchSpotify = async (searchTerm, accessToken) => {
+    if (searchTerm.trim() === '') {
+        console.warn('Search term is empty');
+        return;
+    }
+    const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(searchTerm)}&type=track&limit=10`;
+    const response = await fetch(url, {
+        headers: { 'Authorization': `Bearer ${accessToken}` }
+    })
+    if (!response.ok) {
+        throw new Error('Failed to fetch search results');
+    }
+    const data = await response.json();
+    return data.tracks.items;
 
-const searchSpotify = (searchTerm) => {
-    // This function will fetch search results from the Spotify API
-    alert(`Searching Spotify for: ${searchTerm}`);
 }
 
 export { extractCode, getAccessTokenFromBackend, searchSpotify, authUrl }; 

@@ -24,7 +24,7 @@ const App = () => {
         <div>
             <h1>Spotify Jamming App</h1>
             {accessToken ? (
-                <SearchBar />
+                <SearchBar accessToken={accessToken} />
             ) : (
                 <a href={authUrl}>Login to Spotify</a>
             )}
