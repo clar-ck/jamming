@@ -1,20 +1,36 @@
 import React, { useEffect } from 'react';
 import SearchBar from './SearchBar';
-import { getAccessToken } from './spotify';
+import { extractCode, getAccessTokenFromBackend, authUrl } from './spotify';
 
 const App = () => {
-  useEffect(() => {
-    const token = getAccessToken();
-    if (token) {
-      console.log('Access Token:', token);
-    } else {
-      console.log('No access token found');
-    }
-  }, []);
+    const [accessToken, setAccessToken] = React.useState(null);
 
-  return (
-    <SearchBar />
-  )
+    useEffect(() => {
+        const code = extractCode();
+        if (code) {
+            getAccessTokenFromBackend(code)
+                .then(token => {
+                    setAccessToken(token);
+                    // Optionally, clear the code from the URL after retrieving the token
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                })
+                .catch(error => {
+                    console.error('Error retrieving access token:', error);
+                });
+        }
+    }, []);
+
+    return (
+        <div>
+            <h1>Spotify Jamming App</h1>
+            {accessToken ? (
+                <SearchBar />
+            ) : (
+                <a href={authUrl}>Login to Spotify</a>
+            )}
+        </div>
+    );
+
 }
 
-export default App
+export default App;
