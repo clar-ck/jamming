@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import searchSpotify from './spotify';
+import { searchSpotify } from './spotify';
 
 
 const SearchBar = () => {
