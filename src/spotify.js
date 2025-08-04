@@ -1,6 +1,4 @@
 import React from 'react';
-import { searchSpotify } from './spotify';
-
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 const redirectUri = import.meta.env.VITE_SPOTIFY_REDIRECT_URI;
 const scope = import.meta.env.VITE_SPOTIFY_SCOPE;
