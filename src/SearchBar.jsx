@@ -34,7 +34,7 @@ const SearchBar = ({ accessToken }) => {
         <ul>
             {results.map((track) => (
                 <li key={track.id}>
-                    {track.name} by {track.artistts[0]?.name || 'Unknown Artist'}
+                    {track.name} by {track.artists[0]?.name || 'Unknown Artist'}
                 </li>
             ))}
         </ul>
