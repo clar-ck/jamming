@@ -40,7 +40,7 @@ const Playlist = ({ playlist, onNameChange, onRemoveTrack, accessToken }) => {
     };
 
     return (
-        <div>
+        <div className="playlist-container">
             {!editMode ? (
                 <>
                     <h2>{playlist.name}</h2> <button onClick={toggleEditMode}>Edit</button>   
