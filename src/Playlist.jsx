@@ -23,7 +23,7 @@ const Playlist = ({ playlist, onNameChange, onRemoveTrack}) => {
 
     return (
         <div>
-            {editMode ? (
+            {!editMode ? (
                 <>
                     <h2>{playlist.name}</h2> <button onClick={toggleEditMode}>Edit</button>   
                 </>
