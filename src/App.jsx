@@ -53,7 +53,7 @@ const App = () => {
   // Render the app
   return (
     <div className="app-container">
-      <h1>Spotify Jamming App</h1>
+      <h1 className="app-header">Spotify Jamming App</h1>
       {accessToken ? (
         <>
           <SearchBar accessToken={accessToken} onAddTrack={handleAddTrack} />
