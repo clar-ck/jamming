@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 
-const Playlist = ({ playlist, onChangeName, onRemoveTrack}) => {
+const Playlist = ({ playlist, onNameChangeName, onRemoveTrack}) => {
     return (
         <div>
             <h2>{playlist.name}</h2>
             <input
                 type="text"
                 value={playlist.name}
-                onChange={onChangeName}
+                onChange={onNameChangeName}
                 placeholder="Playlist Name"
             />
 
