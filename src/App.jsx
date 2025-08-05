@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import SearchBar from './SearchBar';
 import Playlist from './Playlist';
+import './App.css';
 import { extractCode, getAccessTokenFromBackend, authUrl } from './spotify';
 
 const App = () => {
