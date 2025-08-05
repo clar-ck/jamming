@@ -43,7 +43,7 @@ const Playlist = ({ playlist, onNameChange, onRemoveTrack, accessToken }) => {
         <div className="playlist-container">
             {!editMode ? (
                 <>
-                    <h2>{playlist.name}</h2> <button onClick={toggleEditMode}>Edit</button>   
+                    <h2>{playlist.name}</h2> <button className="button" onClick={toggleEditMode}>Edit</button>   
                 </>
             ) : (
                 <>
@@ -52,7 +52,7 @@ const Playlist = ({ playlist, onNameChange, onRemoveTrack, accessToken }) => {
                         value={temporaryName}
                         onChange={handleTemporaryNameChange}
                         placeholder="Playlist Name"
-                    /> <button onClick={toggleEditMode}>Save</button>
+                    /> <button className="button" onClick={toggleEditMode}>Save</button>
                 </>
             )}
 
@@ -63,12 +63,12 @@ const Playlist = ({ playlist, onNameChange, onRemoveTrack, accessToken }) => {
                 {playlist.tracks.map(track => (
                     <li className="track-item" key={track.id}>
                         {track.name} by {track.artists[0]?.name || 'Unknown Artist'}
-                        <button onClick={() => onRemoveTrack(track.id)}>Remove</button>
+                        <button className="button" onClick={() => onRemoveTrack(track.id)}>Remove</button>
                     </li>
                 ))}
             </ul>
 
-            <button onClick={handleSavePlaylist}>Save to Spotify</button>
+            <button className="button" onClick={handleSavePlaylist}>Save to Spotify</button>
         </div>
 
     );
