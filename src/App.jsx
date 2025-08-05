@@ -61,6 +61,7 @@ const App = () => {
             playlist={playlist}
             onNameChange={handleNameChange}
             onRemoveTrack={handleRemoveTrack}
+            accessToken={accessToken}
           />
         </>
       ) : (

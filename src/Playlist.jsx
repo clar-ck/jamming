@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { savePlaylist } from './spotify';
 
-const Playlist = ({ playlist, onNameChange, onRemoveTrack}) => {
+const Playlist = ({ playlist, onNameChange, onRemoveTrack, accessToken }) => {
     const [editMode, setEditMode] = useState(false);
     const [temporaryName, setTemporaryName] = useState(playlist.name);
 
@@ -19,6 +20,23 @@ const Playlist = ({ playlist, onNameChange, onRemoveTrack}) => {
     // Function to handle temporary name change
     const handleTemporaryNameChange = (event) => {
         setTemporaryName(event.target.value);
+    };
+
+
+    // Function to handle saving the playlist
+    const handleSavePlaylist = () => {
+        const playListName = playlist.name || "New Playlist";
+        const tracks = playlist.tracks.map(track => track.uri);
+
+        savePlaylist(playListName, tracks, accessToken)
+            .then(data => {
+                console.log('Playlist saved:', data);
+                alert(`Playlist "${data.name}" saved successfully!`);
+            })
+            .catch(error => {
+                console.error('Error saving playlist:', error);
+                alert('Failed to save playlist. Please try again.');
+            });
     };
 
     return (
@@ -49,6 +67,8 @@ const Playlist = ({ playlist, onNameChange, onRemoveTrack}) => {
                     </li>
                 ))}
             </ul>
+
+            <button onClick={handleSavePlaylist}>Save to Spotify</button>
         </div>
 
     );

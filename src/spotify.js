@@ -41,7 +41,43 @@ const searchSpotify = async (searchTerm, accessToken) => {
     }
     const data = await response.json();
     return data.tracks.items;
-
 }
 
-export { extractCode, getAccessTokenFromBackend, searchSpotify, authUrl }; 
+const savePlaylist = async (playlistName, tracks, accessToken) => {
+    if (!playlistName || !tracks.length) {
+        console.warn('Playlist name or tracks are missing');
+        return;
+    }
+
+    const createPlaylistUrl = 'https://api.spotify.com/v1/me/playlists';
+    const createResponse = await fetch(createPlaylistUrl, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: playlistName, public: true })
+    });
+    if (!createResponse.ok) {
+        throw new Error('Failed to create playlist');
+    }
+
+    const playlistData = await createResponse.json();
+    const playlistId = playlistData.id;
+    const addTracksUrl = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
+    const addTracksResponse = await fetch(addTracksUrl, {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ uris: tracks })
+    });
+    if (!addTracksResponse.ok) {
+        throw new Error('Failed to add tracks to playlist');
+    }
+    return playlistData;
+};
+    
+
+export { extractCode, getAccessTokenFromBackend, searchSpotify, savePlaylist, authUrl }; 
