@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { searchSpotify } from './spotify';
 
 
-const SearchBar = ({ accessToken }) => {
+const SearchBar = ({ accessToken, onAddTrack }) => {
     const [Search, setSearch] = useState('');
     const [results, setResults] = useState([]);
 
@@ -34,7 +34,8 @@ const SearchBar = ({ accessToken }) => {
         <ul>
             {results.map((track) => (
                 <li key={track.id}>
-                    {track.name} by {track.artists[0]?.name || 'Unknown Artist'}
+                    {track.name} by {track.artists[0]?.name || 'Unknown Artist'} <button onClick={() => onAddTrack(track)}>Add</button>
+
                 </li>
             ))}
         </ul>
