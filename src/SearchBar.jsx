@@ -21,7 +21,8 @@ const SearchBar = ({ accessToken, onAddTrack }) => {
     }
 
     const handleClear = () => {
-        setSearch('');
+        setSearch('')
+        setResults([]);
     }
 
 
