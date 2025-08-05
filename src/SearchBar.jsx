@@ -28,18 +28,20 @@ const SearchBar = ({ accessToken, onAddTrack }) => {
 
     return (
         <>
-        <div>Search Bar</div>
-        <input type="text" value={Search} onChange={handleChange} placeholder="Search..." />
-        <button onClick={handleSearch}>Search</button>
-        <button onClick={handleClear}>Clear</button>
-        <ul>
-            {results.map((track) => (
-                <li key={track.id}>
-                    {track.name} by {track.artists[0]?.name || 'Unknown Artist'} <button onClick={() => onAddTrack(track)}>Add</button>
+        <div className="search-bar">Search Bar</div>
+        <input className="search-input" type="text" value={Search} onChange={handleChange} placeholder="Search..." />
+        <button className="search-button" onClick={handleSearch}>Search</button>
+        <button className="clear-button" onClick={handleClear}>Clear</button>
+        <div className="search-results">
+            <ul>
+                {results.map((track) => (
+                    <li key={track.id}>
+                        {track.name} by {track.artists[0]?.name || 'Unknown Artist'} <button onClick={() => onAddTrack(track)}>Add</button>
 
-                </li>
-            ))}
-        </ul>
+                    </li>
+                ))}
+            </ul>
+        </div>
         <div>Search Term: {Search}</div>
         <div>Results: {results.length}</div>
         </>
