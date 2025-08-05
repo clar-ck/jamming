@@ -25,21 +25,19 @@ const Playlist = ({ playlist, onNameChange, onRemoveTrack}) => {
         <div>
             {editMode ? (
                 <>
-                    <h2>{playlist.name}</h2>
-                    <button onClick={toggleEditMode}>Edit</button>
+                    <h2>{playlist.name}</h2> <button onClick={toggleEditMode}>Edit</button>   
                 </>
             ) : (
                 <>
                     <input
                         type="text"
-                        value={playlist.name}
-                        onChange={onNameChange}
+                        value={temporaryName}
+                        onChange={handleTemporaryNameChange}
                         placeholder="Playlist Name"
-                    />
-                <button onClick={toggleEditMode}>Save</button>
+                    /> <button onClick={toggleEditMode}>Save</button>
                 </>
             )}
-            
+
             <h3>Tracks</h3>
             {playlist.tracks.length === 0 && <p>No tracks in the playlist</p>}
 
