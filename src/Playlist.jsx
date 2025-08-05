@@ -41,20 +41,23 @@ const Playlist = ({ playlist, onNameChange, onRemoveTrack, accessToken }) => {
 
     return (
         <div className="playlist-container">
-            {!editMode ? (
-                <>
-                    <h2>{playlist.name}</h2> <button className="button" onClick={toggleEditMode}>Edit</button>   
-                </>
-            ) : (
-                <>
-                    <input
-                        type="text"
-                        value={temporaryName}
-                        onChange={handleTemporaryNameChange}
-                        placeholder="Playlist Name"
-                    /> <button className="button" onClick={toggleEditMode}>Save</button>
-                </>
-            )}
+            <div className="playlist-header">
+                {!editMode ? (
+                    <>
+                        <h2>{playlist.name}</h2>
+                        <button className="button" onClick={toggleEditMode}>Edit</button>   
+                    </>
+                ) : (
+                    <>
+                        <input
+                            type="text"
+                            value={temporaryName}
+                            onChange={handleTemporaryNameChange}
+                            placeholder="Playlist Name"
+                        /> <button className="button" onClick={toggleEditMode}>Save</button>
+                    </>
+                )}
+            </div>
 
             <h3>Tracks</h3>
             {playlist.tracks.length === 0 && <p>No tracks in the playlist</p>}

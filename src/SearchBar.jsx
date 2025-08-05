@@ -28,7 +28,6 @@ const SearchBar = ({ accessToken, onAddTrack }) => {
 
     return (
         <>
-        <div className="search-bar">Search Bar</div>
         <input className="search-input" type="text" value={Search} onChange={handleChange} placeholder="Search..." />
         <button className="search-button" onClick={handleSearch}>Search</button>
         <button className="clear-button" onClick={handleClear}>Clear</button>
@@ -42,7 +41,6 @@ const SearchBar = ({ accessToken, onAddTrack }) => {
                 ))}
             </ul>
         </div>
-        <div>Search Term: {Search}</div>
         <div>Results: {results.length}</div>
         </>
     )
