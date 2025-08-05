@@ -1,17 +1,45 @@
 import React, { useState } from "react";
 
-
 const Playlist = ({ playlist, onNameChange, onRemoveTrack}) => {
+    const [editMode, setEditMode] = useState(false);
+    const [temporaryName, setTemporaryName] = useState(playlist.name);
+
+    // Function to toggle edit mode
+    const toggleEditMode = () => {
+        setEditMode(!editMode);
+        if (editMode) {
+            // Save changes when exiting edit mode
+            onNameChange({ target: { value: temporaryName } });
+        } else {
+            // Enter edit mode
+            setTemporaryName(playlist.name);
+        }
+    };
+
+    // Function to handle temporary name change
+    const handleTemporaryNameChange = (event) => {
+        setTemporaryName(event.target.value);
+    };
+
     return (
         <div>
-            <h2>{playlist.name}</h2>
-            <input
-                type="text"
-                value={playlist.name}
-                onChange={onNameChange}
-                placeholder="Playlist Name"
-            />
-
+            {editMode ? (
+                <>
+                    <h2>{playlist.name}</h2>
+                    <button onClick={toggleEditMode}>Edit</button>
+                </>
+            ) : (
+                <>
+                    <input
+                        type="text"
+                        value={playlist.name}
+                        onChange={onNameChange}
+                        placeholder="Playlist Name"
+                    />
+                <button onClick={toggleEditMode}>Save</button>
+                </>
+            )}
+            
             <h3>Tracks</h3>
             {playlist.tracks.length === 0 && <p>No tracks in the playlist</p>}
 
