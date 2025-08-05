@@ -52,7 +52,7 @@ const App = () => {
 
   // Render the app
   return (
-    <div>
+    <div className="app-container">
       <h1>Spotify Jamming App</h1>
       {accessToken ? (
         <>
