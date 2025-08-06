@@ -1,12 +1,54 @@
-# React + Vite
+# Jammming Playlist App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React app that lets users search for songs using the Spotify API, create custom playlists, and save them to their Spotify account.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Search for tracks using the Spotify API
+- Add and remove tracks from a custom playlist
+- Edit playlist name
+- Save playlists directly to your Spotify account
 
-## Expanding the ESLint configuration
+## Repositories
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** [jamming](https://github.com/clar-ck/jamming)
+- **Backend:** [jamming-backend](https://github.com/clar-ck/jamming-backend)
+
+## Deployment
+
+- **Frontend:** Deployed on [Netlify](https://www.netlify.com/)
+- **Backend:** Deployed on [Render](https://render.com/)
+
+## Getting Started
+
+1. Clone both repositories:
+
+git clone https://github.com/clar-ck/jamming.git git clone https://github.com/clar-ck/jamming-backend.git
+
+2. Install dependencies in each folder:
+
+npm install
+
+3. Set up your Spotify API credentials in a `.env` file for both frontend and backend.
+
+4. Start the backend server:
+
+npm server.js
+
+5. Start the frontend development server:
+
+npm run dev
+
+
+## Technologies Used
+
+- React (Vite)
+- Node.js/Express (Backend)
+- Spotify Web API
+- CSS
+- Netlify (Frontend hosting)
+- Render (Backend hosting)
+
+## License
+
+This project is for educational purposes.
